@@ -1,4 +1,10 @@
-require: standard
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-capybara
 
 inherit_gem:
   standard: config/base.yml
+
+AllCops:
+  NewCops: enable

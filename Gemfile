@@ -47,6 +47,9 @@ gem "image_processing", "~> 1.2"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
+
+  # get IRB improvements faster
+  gem "irb"
 end
 
 group :development do
@@ -55,6 +58,14 @@ group :development do
 
   # linter and formatter
   gem "standard"
+
+  # lint plugins
+  gem "rubocop-rails"
+  gem "rubocop-capybara"
+
+  # language server protocol support
+  gem "ruby-lsp"
+  gem "ruby-lsp-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
