@@ -62,6 +62,9 @@ group :development do
   # lint plugins
   gem "rubocop-rails"
   gem "rubocop-capybara"
+  gem "rubocop-performance"
+  gem "rubocop-minitest"
+  gem "rubocop-rubycw"
 
   # language server protocol support
   gem "ruby-lsp"
