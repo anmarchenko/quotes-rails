@@ -57,14 +57,17 @@ group :development do
   gem "web-console"
 
   # linter and formatter
-  gem "standard"
+  gem "standard", require: false
 
   # lint plugins
-  gem "rubocop-rails"
-  gem "rubocop-capybara"
-  gem "rubocop-performance"
-  gem "rubocop-minitest"
-  gem "rubocop-rubycw"
+  gem "rubocop-rails", require: false
+  gem "rubocop-capybara", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-minitest", require: false
+  gem "rubocop-rubycw", require: false
+
+  # code smells search
+  gem "rubycritic", require: false
 
   # language server protocol support
   gem "ruby-lsp"

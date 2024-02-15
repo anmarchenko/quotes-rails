@@ -1,0 +1,12 @@
+---
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
+  LongParameterList:
+    enabled: true
+    exclude: []
+    max_params: 4
+    overrides:
+      initialize:
+        max_params: 5
