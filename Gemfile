@@ -69,6 +69,10 @@ group :development do
   # code smells search
   gem "rubycritic", require: false
 
+  # security static analysis
+  gem "brakeman", require: false
+  gem "bundler-audit", require: false
+
   # language server protocol support
   gem "ruby-lsp"
   gem "ruby-lsp-rails"
