@@ -78,8 +78,14 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
+  # do not allow lazy loading associations
+  config.active_record.strict_loading_by_default = true
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # console sandbox by default
+  config.sandbox_by_default = true
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
