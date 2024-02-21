@@ -3,6 +3,10 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
-  ]
-}
+    './app/javascript/**/*.js',
+  ],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  daisyui: {
+    themes: ['retro', 'dracula'],
+  },
+};
