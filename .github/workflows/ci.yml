@@ -1,4 +1,4 @@
-name: pipeline-pandora-ci
+name: pipeline-quotes-rails-ci
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  job-pandora-lint:
+  job-quotes-rails-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,7 +23,7 @@ jobs:
 
       - name: Lint code
         run: rake lint
-  job-pandora-security-check:
+  job-quotes-rails-security-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -42,7 +42,7 @@ jobs:
 
       - name: Run security check
         run: rake security
-  job-pandora-test:
+  job-quotes-rails-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

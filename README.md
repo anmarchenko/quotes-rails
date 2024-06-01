@@ -1,3 +1,3 @@
-# Pandora
+# Quotes rails
 
-TBD
+Example rails app with hotwire.
