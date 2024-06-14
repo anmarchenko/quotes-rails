@@ -18,11 +18,8 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-      - name: Install dependencies
-        run: bundle install
-
       - name: Lint code
-        run: rake lint
+        run: bundle exec rake lint
   job-quotes-rails-security-check:
     runs-on: ubuntu-latest
     steps:
@@ -39,9 +36,8 @@ jobs:
           node-version: 21.x
       - name: Install dependencies
         run: bundle install
-
       - name: Run security check
-        run: rake security
+        run: bundle exec rake security
   job-quotes-rails-test:
     runs-on: ubuntu-latest
     steps:
@@ -52,8 +48,5 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-      - name: Install dependencies
-        run: bundle install
-
       - name: Run tests
-        run: rake test
+        run: bundle exec rake test
