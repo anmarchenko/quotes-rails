@@ -110,7 +110,13 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
+    datadog (2.1.0)
+      debase-ruby_core_source (= 3.3.1)
+      libdatadog (~> 9.0.0.1.0)
+      libddwaf (~> 1.14.0.0.0)
+      msgpack
     date (3.3.4)
+    debase-ruby_core_source (3.3.1)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
@@ -161,6 +167,19 @@ GEM
     launchy (3.0.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
+    libdatadog (9.0.0.1.0)
+    libdatadog (9.0.0.1.0-aarch64-linux)
+    libdatadog (9.0.0.1.0-x86_64-linux)
+    libddwaf (1.14.0.0.0)
+      ffi (~> 1.0)
+    libddwaf (1.14.0.0.0-aarch64-linux)
+      ffi (~> 1.0)
+    libddwaf (1.14.0.0.0-arm64-darwin)
+      ffi (~> 1.0)
+    libddwaf (1.14.0.0.0-x86_64-darwin)
+      ffi (~> 1.0)
+    libddwaf (1.14.0.0.0-x86_64-linux)
+      ffi (~> 1.0)
     lint_roller (1.1.0)
     litestack (0.4.4)
       erubi (~> 1)
@@ -418,6 +437,7 @@ DEPENDENCIES
   bundler-audit
   capybara
   cssbundling-rails
+  datadog
   debug
   image_processing (~> 1.2)
   irb
