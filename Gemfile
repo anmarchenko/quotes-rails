@@ -91,4 +91,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # test visibility and optimisation
+  gem "datadog-ci", "~> 1.1"
 end
