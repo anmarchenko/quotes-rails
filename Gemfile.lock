@@ -317,11 +317,6 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
-    rubocop-capybara (2.21.0)
-      rubocop (~> 1.41)
-    rubocop-minitest (0.34.5)
-      rubocop (>= 1.39, < 2.0)
-      rubocop-ast (>= 1.30.0, < 2.0)
     rubocop-performance (1.20.2)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.30.0, < 2.0)
@@ -458,8 +453,6 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 7.1.2)
-  rubocop-capybara
-  rubocop-minitest
   rubocop-performance
   rubocop-rails
   rubocop-rubycw

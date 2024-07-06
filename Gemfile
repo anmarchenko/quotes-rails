@@ -67,9 +67,7 @@ group :development do
 
   # lint plugins
   gem "rubocop-rails", require: false
-  gem "rubocop-capybara", require: false
   gem "rubocop-performance", require: false
-  gem "rubocop-minitest", require: false
   gem "rubocop-rubycw", require: false
 
   # code smells search

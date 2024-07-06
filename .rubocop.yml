@@ -1,9 +1,7 @@
 require:
   - standard
   - rubocop-rails
-  - rubocop-capybara
   - rubocop-performance
-  - rubocop-minitest
   - rubocop-rubycw
 
 inherit_gem:
