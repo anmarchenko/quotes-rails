@@ -1,0 +1,6 @@
+<h1><%= t("quotes.index.header") %></h1>
+<%= link_to "New quote",
+                new_quote_path,
+                class: "btn btn-primary btn-sm" %>
+
+<%= render @quotes %>

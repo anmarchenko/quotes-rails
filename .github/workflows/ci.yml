@@ -47,6 +47,21 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
-          bundler-cache: true
+          bundler-cache: false
       - name: Run tests
         run: bundle exec rake test
+
+  job-quotes-rails-system-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: false
+      - name: Run tests
+        run: bundle exec rake test:system

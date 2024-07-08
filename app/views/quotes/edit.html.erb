@@ -1,0 +1,5 @@
+<%= link_to sanitize("&larr; #{t("quotes.edit.back")}"), quote_path(@quote) %>
+
+<h1><%= t("quotes.edit.header") %></h1>
+
+<%= render "form", quote: @quote %>

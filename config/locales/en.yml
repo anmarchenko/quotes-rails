@@ -28,4 +28,20 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  quotes:
+    index:
+      header: 'My quotes'
+    new:
+      back: 'Back to quotes'
+      header: 'New quote'
+    edit:
+      back: 'Back to quote'
+      header: 'Edit quote'
+    fields:
+      name: 'Name'
+    created: 'Quote was successfully created.'
+    updated: 'Quote was successfully updated.'
+    destroyed: 'Quote was successfully destroyed.'
+  forms:
+    save: 'Save'
