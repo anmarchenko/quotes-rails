@@ -2,6 +2,17 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 
+require "datadog/ci"
+
+# Only activates test instrumentation on CI
+if ENV["DD_ENV"] == "ci"
+  Datadog.configure do |c|
+    c.ci.enabled = true
+    c.service = "quotes-rails"
+    c.ci.instrument :minitest
+  end
+end
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
