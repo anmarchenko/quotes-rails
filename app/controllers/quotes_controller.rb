@@ -21,7 +21,6 @@ class QuotesController < ApplicationController
     if @quote.save
       redirect_to quotes_path, notice: t("quotes.created")
     else
-      p @quote.errors.any?
       render :new, status: :unprocessable_entity
     end
   end
