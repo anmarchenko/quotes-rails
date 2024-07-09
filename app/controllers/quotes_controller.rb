@@ -36,7 +36,11 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, notice: t("quotes.destroyed")
+
+    respond_to do |format|
+      format.html { redirect_to quotes_path, notice: t("quotes.destroyed") }
+      format.turbo_stream
+    end
   end
 
   private

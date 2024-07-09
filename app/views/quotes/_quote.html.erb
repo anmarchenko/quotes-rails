@@ -1,6 +1,10 @@
-<%= turbo_frame_tag "quote_#{quote.id}" do %>
+<%= turbo_frame_tag quote do %>
   <div class="mb-10">
-    <h2><%= link_to quote.name, quote_path(quote) %></h2>
+    <h2>
+      <%= link_to quote.name,
+                  quote_path(quote),
+                  data: { turbo_frame: "_top" } %>
+      </h2>
     <div class="flex space-x-4">
       <%= link_to "Edit",
                   edit_quote_path(quote),
