@@ -1,6 +1,8 @@
 <h1><%= t("quotes.index.header") %></h1>
-<%= link_to "New quote",
-                new_quote_path,
-                class: "btn btn-primary btn-sm" %>
+<%= turbo_frame_tag "new_quote_turbo_frame" do %>
+  <%= link_to "New quote",
+                  new_quote_path,
+                  class: "btn btn-primary btn-sm" %>
+<% end %>
 
 <%= render @quotes %>
