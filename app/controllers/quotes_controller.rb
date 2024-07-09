@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: %i[show edit update destroy]
 
   def index
     @quotes = Quote.all
@@ -42,7 +42,7 @@ class QuotesController < ApplicationController
   private
 
   def set_quote
-    @quote = Quote.find(params[:id])
+    @quote = Quote.find(params.fetch(:id))
   end
 
   def quote_params
