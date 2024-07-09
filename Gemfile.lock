@@ -90,12 +90,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
-    brakeman (6.1.2)
-      racc
     builder (3.3.0)
-    bundler-audit (0.9.1)
-      bundler (>= 1.2.0, < 3)
-      thor (~> 1.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -316,9 +311,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.3.1)
-      actionpack (>= 5.2)
-      activemodel (>= 5.2)
     sorbet-runtime (0.5.11473)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
@@ -385,8 +377,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  brakeman
-  bundler-audit
   capybara
   cssbundling-rails
   datadog
@@ -407,7 +397,6 @@ DEPENDENCIES
   ruby-lsp
   ruby-lsp-rails
   selenium-webdriver
-  simple_form (~> 5.1)
   sqlite3 (~> 1.4)
   standard (~> 1.39)
   stimulus-rails

@@ -7,6 +7,12 @@ on:
     branches:
       - main
 
+env:
+  DD_CIVISIBILITY_AGENTLESS_ENABLED: true
+  DD_API_KEY: ${{ secrets.DD_API_KEY }}
+  DD_SITE: datadoghq.eu
+  DD_ENV: ci
+
 jobs:
   job-quotes-rails-lint:
     runs-on: ubuntu-latest
@@ -20,26 +26,11 @@ jobs:
           bundler-cache: true
       - name: Lint code
         run: bundle exec rake lint
-  job-quotes-rails-security-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.3
-          bundler-cache: true
-      - name: Set Node.js 21.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 21.x
-      - name: Install dependencies
-        run: bundle install
-      - name: Run security check
-        run: bundle exec rake security
+
   job-quotes-rails-test:
     runs-on: ubuntu-latest
+    env:
+      DD_CIVISIBILITY_ITR_ENABLED: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,3 +41,18 @@ jobs:
           bundler-cache: true
       - name: Run tests
         run: bundle exec rake test
+
+  job-quotes-rails-system-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Run tests
+        run: bundle exec rake test:system

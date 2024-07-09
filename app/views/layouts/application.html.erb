@@ -11,9 +11,9 @@
   </head>
 
   <body>
-    <div class="navbar">
-      <div class="flex-1">
-        Quotes
+    <div class="navbar px-10">
+      <div class="flex-1 text-lg">
+        Quotify App
       </div>
       <div class="flex-none gap-2">
         <div class="dropdown dropdown-end">
@@ -35,6 +35,8 @@
         </div>
       </div>
     </div>
-    <%= yield %>
+    <main class="p-10 prose">
+      <%= yield %>
+    </main>
   </body>
 </html>

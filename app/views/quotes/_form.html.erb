@@ -1,0 +1,16 @@
+<%= form_with model: quote do |f| %>
+  <%# TODO: extract this to a custom form builder %>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text"><%= t("quotes.fields.name") %></span>
+    </div>
+    <%= f.text_field :name, autofocus: true, required: true, class: "input input-bordered" %>
+    <% if quote.errors[:name].any? %>
+      <div class="text-red-500">
+        <%= quote.errors[:name].first %>
+      </div>
+    <% end %>
+  </label>
+
+  <%= f.submit t("forms.save"), class: "btn btn-primary mt-5 btn-sm" %>
+<% end %>

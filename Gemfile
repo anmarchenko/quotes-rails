@@ -32,9 +32,6 @@ gem "stimulus-rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
 
-# HTML forms support
-gem "simple_form", "~> 5.1"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -72,10 +69,6 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rubycw", require: false
-
-  # security static analysis
-  gem "brakeman", require: false
-  gem "bundler-audit", require: false
 
   # language server protocol support
   gem "ruby-lsp"
