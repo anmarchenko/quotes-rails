@@ -2,7 +2,7 @@ name: pipeline-quotes-rails-ci
 on:
   push:
     branches:
-      - **
+      - '**'
 
 env:
   DD_CIVISIBILITY_AGENTLESS_ENABLED: true
