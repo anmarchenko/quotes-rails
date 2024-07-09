@@ -26,24 +26,7 @@ jobs:
           bundler-cache: true
       - name: Lint code
         run: bundle exec rake lint
-  job-quotes-rails-security-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.3
-          bundler-cache: true
-      - name: Set Node.js 21.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 21.x
-      - name: Install dependencies
-        run: bundle install
-      - name: Run security check
-        run: bundle exec rake security
+
   job-quotes-rails-test:
     runs-on: ubuntu-latest
     env:

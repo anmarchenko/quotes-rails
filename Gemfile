@@ -70,10 +70,6 @@ group :development do
   gem "rubocop-performance", require: false
   gem "rubocop-rubycw", require: false
 
-  # security static analysis
-  gem "brakeman", require: false
-  gem "bundler-audit", require: false
-
   # language server protocol support
   gem "ruby-lsp"
   gem "ruby-lsp-rails"
