@@ -45,3 +45,4 @@ en:
     destroyed: 'Quote was successfully destroyed.'
   forms:
     save: 'Save'
+    cancel: 'Cancel'

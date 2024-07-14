@@ -1,8 +1,11 @@
 <h1><%= t("quotes.index.header") %></h1>
-<%= turbo_frame_tag "new_quote_turbo_frame" do %>
-  <%= link_to "New quote",
-                  new_quote_path,
-                  class: "btn btn-primary btn-sm" %>
-<% end %>
+<%= link_to "New quote",
+                new_quote_path,
+                class: "btn btn-primary btn-sm",
+                data: { turbo_frame: dom_id(Quote.new) } %>
 
-<%= render @quotes %>
+<%= turbo_frame_tag Quote.new %>
+
+<%= turbo_frame_tag "quotes" do %>
+  <%= render @quotes %>
+<% end %>
