@@ -2,4 +2,6 @@
 
 <h1><%= t("quotes.new.header") %></h1>
 
-<%= render "form", quote: @quote %>
+<%= turbo_frame_tag @quote do %>
+  <%= render "form", quote: @quote %>
+<% end %>

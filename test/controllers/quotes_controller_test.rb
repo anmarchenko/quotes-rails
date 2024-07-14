@@ -8,6 +8,16 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", count: Quote.count
   end
 
+  test "index orders the newest quote first" do
+    new_quote = create(:quote, name: "New quote")
+
+    get root_url
+
+    assert_response :success
+    quotes = assert_select "h2"
+    assert_equal new_quote.name, quotes.first.text.strip
+  end
+
   test "show displays the quote" do
     quote = quotes(:first)
     get quote_url(quote)
