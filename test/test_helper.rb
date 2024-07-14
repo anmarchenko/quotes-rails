@@ -3,10 +3,11 @@ require_relative "../config/environment"
 require "rails/test_help"
 require "factory_bot_rails"
 
-require "datadog/ci"
-
 # Only activates test instrumentation on CI
 if ENV["DD_ENV"] == "ci"
+  require "datadog/ci"
+  require "datadog/auto_instrument"
+
   Datadog.configure do |c|
     c.ci.enabled = true
     c.service = "quotes-rails"
