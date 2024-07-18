@@ -46,3 +46,28 @@ en:
   forms:
     save: 'Save'
     cancel: 'Cancel'
+  passwords:
+    changed: 'Your password has been changed'
+  registrations:
+    created: 'Welcome! You have signed up successfully'
+  sessions:
+    created: 'Signed in successfully'
+    invalid: 'That email or password is incorrect'
+    logout: 'That session has been logged out'
+  email_verifications:
+    created: 'We sent a verification email to your email address'
+    verified: 'Thank you for verifying your email address'
+    invalid: 'That email verification token is invalid'
+  emails:
+    updated: 'Your email has been changed'
+  password_resets:
+    created: 'Check your email for reset instructions'
+    not_verified: "You can't reset your password until you verify your email"
+    updated: 'Your password was reset successfully. Please sign in'
+    invalid: 'That password reset link is invalid'
+  mailers:
+    user_mailer:
+      password_reset:
+        subject: 'Reset your password'
+      email_verification:
+        subject: 'Verify your email'

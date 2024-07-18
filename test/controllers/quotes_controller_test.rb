@@ -1,6 +1,10 @@
 require "test_helper"
 
 class QuotesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = sign_in_as(users(:lazaro_nixon))
+  end
+
   test "index lists all quotes" do
     get root_url
 
