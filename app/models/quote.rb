@@ -1,3 +1,4 @@
+# Description: Quote model to store quotes.
 class Quote < ApplicationRecord
   validates :name, presence: true
 
