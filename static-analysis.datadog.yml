@@ -7,6 +7,9 @@ rulesets:
       percent-w:
         ignore:
           - '**'
+      percent-i:
+        ignore:
+          - '**'
       hash-fetch:
         ignore:
           - '**'
