@@ -13,4 +13,7 @@ rulesets:
       hash-fetch:
         ignore:
           - '**'
+      no-optional-hash-params:
+        ignore:
+          - '**'
   - rails-best-practices

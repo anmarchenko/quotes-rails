@@ -54,6 +54,13 @@ en:
     created: 'Signed in successfully'
     invalid: 'That email or password is incorrect'
     logout: 'That session has been logged out'
+    fields:
+      email: Email
+      password: Password
+    actions:
+      sign_in: 'Sign in'
+      sign_up: 'Sign up'
+      forgot_password: 'Forgot your password?'
   email_verifications:
     created: 'We sent a verification email to your email address'
     verified: 'Thank you for verifying your email address'
