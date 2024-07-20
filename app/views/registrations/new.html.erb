@@ -2,11 +2,11 @@
 
 <%= form_with model: @user, url: sign_up_path, autocomplete: "off" do |f| %>
   <%= f.input :email_field, :email,
-                label: t("registrations.fields.email"),
+                label: t("email"),
                 required: true, autofocus: true %>
 
   <%= f.input :password_field, :password,
-                label: t("registrations.fields.password"),
+                label: t("password"),
                 required: true %>
 
   <%= f.input :password_field, :password_confirmation,

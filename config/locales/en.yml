@@ -28,7 +28,11 @@
 #       enabled: "ON"
 
 en:
-  hello: 'Hello world'
+  email: Email
+  password: Password
+  forms:
+    save: 'Save'
+    cancel: 'Cancel'
   quotes:
     index:
       header: 'My quotes'
@@ -43,25 +47,17 @@ en:
     created: 'Quote was successfully created.'
     updated: 'Quote was successfully updated.'
     destroyed: 'Quote was successfully destroyed.'
-  forms:
-    save: 'Save'
-    cancel: 'Cancel'
   passwords:
     changed: 'Your password has been changed'
   registrations:
     action: 'Sign up'
     created: 'Welcome! You have signed up successfully'
     fields:
-      email: Email
-      password: Password
       password_confirmation: 'Password (again)'
   sessions:
     created: 'Signed in successfully'
     invalid: 'That email or password is incorrect'
     logout: 'That session has been logged out'
-    fields:
-      email: Email
-      password: Password
     actions:
       sign_in: 'Sign in'
       sign_up: 'Sign up'
@@ -73,6 +69,9 @@ en:
   emails:
     updated: 'Your email has been changed'
   password_resets:
+    new:
+      header: 'Forgot your password?'
+      action: 'Send password reset email'
     created: 'Check your email for reset instructions'
     not_verified: "You can't reset your password until you verify your email"
     updated: 'Your password was reset successfully. Please sign in'

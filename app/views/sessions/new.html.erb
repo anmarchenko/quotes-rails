@@ -4,8 +4,8 @@
 <h1><%= t("sessions.actions.sign_in") %></h1>
 
 <%= form_with(url: sign_in_path) do |f| %>
-  <%= f.input :email_field, :email, label: t("sessions.fields.email"), required: true, autofocus: true, autocomplete: "email"  %>
-  <%= f.input :password_field, :password, label: t("sessions.fields.password"), required: true, autocomplete: "current-password"  %>
+  <%= f.input :email_field, :email, label: t("email"), required: true, autofocus: true, autocomplete: "email"  %>
+  <%= f.input :password_field, :password, label: t("password"), required: true, autocomplete: "current-password"  %>
 
   <%= f.submit t("sessions.actions.sign_in"), class: "mt-5" %>
 <% end %>
