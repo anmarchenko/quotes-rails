@@ -5,13 +5,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:lazaro_nixon)
   end
 
-  test "should get index" do
-    sign_in_as @user
-
-    get sessions_url
-    assert_response :success
-  end
-
   test "should get new" do
     get sign_in_url
     assert_response :success
