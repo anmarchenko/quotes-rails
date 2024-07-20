@@ -86,6 +86,14 @@ en:
     not_verified: "You can't reset your password until you verify your email"
     updated: 'Your password was reset successfully. Please sign in'
     invalid: 'That password reset link is invalid'
+  passwords:
+    changed: 'Your password has been changed'
+    edit:
+      header: 'Change your password'
+      action: 'Save changes'
+      password_challenge: 'Enter your current password'
+      password: 'New password'
+      password_confirmation: 'Confirm new password'
   mailers:
     user_mailer:
       password_reset:

@@ -19,6 +19,6 @@ class PasswordsController < ApplicationController
   end
 
   def user_params
-    params.permit(:password, :password_confirmation, :password_challenge).with_defaults(password_challenge: "")
+    params.require(:user).permit(:password, :password_confirmation, :password_challenge).with_defaults(password_challenge: "")
   end
 end
