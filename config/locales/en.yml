@@ -30,6 +30,7 @@
 en:
   email: Email
   password: Password
+  back: Back
   forms:
     save: 'Save'
     cancel: 'Cancel'
@@ -68,6 +69,15 @@ en:
     invalid: 'That email verification token is invalid'
   emails:
     updated: 'Your email has been changed'
+    edit:
+      actions:
+        save: 'Save changes'
+        resend_email: 'Re-send verification email'
+      header: 'Change your email'
+      verify_email: 'Verify your email'
+      verify_email_description: "We sent a verification email to the address below. Check that email and follow those instructions to confirm it's your email address."
+      password_challenge: 'Enter your password'
+      new_email: 'New email'
   password_resets:
     new:
       header: 'Forgot your password?'

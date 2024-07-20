@@ -1,43 +1,23 @@
 <p style="color: red"><%= alert %></p>
 
 <% if Current.user.verified? %>
-  <h1>Change your email</h1>
+  <h1><%= t("emails.edit.header") %></h1>
 <% else %>
-  <h1>Verify your email</h1>
-  <p>We sent a verification email to the address below. Check that email and follow those instructions to confirm it's your email address.</p>
-  <p><%= button_to "Re-send verification email", identity_email_verification_path %></p>
+  <h1><%= t("emails.edit.verify_email") %></h1>
+  <p><%= t("emails.edit.verify_email_description") %></p>
+  <p><%= button_to t("emails.edit.actions.resend_email"), identity_email_verification_path %></p>
 <% end %>
 
-<%= form_with(url: identity_email_path, method: :patch) do |form| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_with(model: @user, url: identity_email_path, method: :patch) do |f| %>
+  <%= f.input :email_field, :email,
+                label: t("emails.edit.new_email"),
+                required: true, autofocus: true %>
+  <%= f.input :password_field, :password_challenge,
+                label: t("emails.edit.password_challenge"),
+                required: true %>
 
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :email, "New email", style: "display: block" %>
-    <%= form.email_field :email, required: true, autofocus: true %>
-  </div>
-
-  <div>
-    <%= form.label :password_challenge, style: "display: block" %>
-    <%= form.password_field :password_challenge, required: true, autocomplete: "current-password" %>
-  </div>
-
-  <div>
-    <%= form.submit "Save changes" %>
+  <div class="flex flex-row space-x-2 mt-5">
+    <%= f.submit t("emails.edit.actions.save") %>
+    <%= link_to t("back"), root_path, class: "btn btn-secondary btn-sm" %>
   </div>
 <% end %>
-
-<br>
-
-<div>
-  <%= link_to "Back", root_path %>
-</div>
