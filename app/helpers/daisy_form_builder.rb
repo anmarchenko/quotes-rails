@@ -3,6 +3,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 
   def input(type, name, options = {})
     label_text = options.delete(:label) || name.to_s.humanize
+    model = options.delete(:model) || @object
 
     options[:class] = "input input-bordered #{options[:class]}"
 
@@ -14,7 +15,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
           end
         end),
         send(type, name, options),
-        errors(name)
+        errors(model, name)
       ])
     end
   end
@@ -25,10 +26,10 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
     super
   end
 
-  def errors(name)
-    if @object&.errors&.[](name)&.any?
+  def errors(model, name)
+    if model&.errors&.[](name)&.any?
       tag.div class: "text-red-500 text-xs" do
-        @object.errors[name].join(", ")
+        model.errors[name].join(", ")
       end
     else
       ""

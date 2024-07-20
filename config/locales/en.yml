@@ -49,7 +49,12 @@ en:
   passwords:
     changed: 'Your password has been changed'
   registrations:
+    action: 'Sign up'
     created: 'Welcome! You have signed up successfully'
+    fields:
+      email: Email
+      password: Password
+      password_confirmation: 'Password (again)'
   sessions:
     created: 'Signed in successfully'
     invalid: 'That email or password is incorrect'
