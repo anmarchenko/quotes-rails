@@ -48,7 +48,7 @@ class Identity::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   test "should update password" do
     sid = @user.generate_token_for(:password_reset)
 
-    patch identity_password_reset_url, params: {sid: sid, password: "Secret6*4*2*", password_confirmation: "Secret6*4*2*"}
+    patch identity_password_reset_url, params: {user: {sid: sid, password: "Secret6*4*2*", password_confirmation: "Secret6*4*2*"}}
     assert_redirected_to sign_in_url
   end
 
@@ -57,7 +57,7 @@ class Identity::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
 
     travel 30.minutes
 
-    patch identity_password_reset_url, params: {sid: sid, password: "Secret6*4*2*", password_confirmation: "Secret6*4*2*"}
+    patch identity_password_reset_url, params: {user: {sid: sid, password: "Secret6*4*2*", password_confirmation: "Secret6*4*2*"}}
 
     assert_redirected_to new_identity_password_reset_url
     assert_equal "That password reset link is invalid", flash[:alert]

@@ -82,6 +82,9 @@ en:
     new:
       header: 'Forgot your password?'
       action: 'Send password reset email'
+    edit:
+      header: 'Reset your password'
+      action: 'Save changes'
     created: 'Check your email for reset instructions'
     not_verified: "You can't reset your password until you verify your email"
     updated: 'Your password was reset successfully. Please sign in'

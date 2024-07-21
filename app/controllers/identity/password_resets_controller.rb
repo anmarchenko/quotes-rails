@@ -29,13 +29,14 @@ class Identity::PasswordResetsController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by_token_for!(:password_reset, params[:sid])
+    sid = params[:sid] || params.dig(:user, :sid)
+    @user = User.find_by_token_for!(:password_reset, sid)
   rescue
     redirect_to new_identity_password_reset_path, alert: t("password_resets.invalid")
   end
 
   def user_params
-    params.permit(:password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
   def send_password_reset_email
