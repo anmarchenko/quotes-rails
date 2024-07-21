@@ -1,0 +1,23 @@
+<% if notice %>
+  <div
+    class="toast toast-top toast-start"
+    data-controller="removals"
+    data-action="animationend->removals#remove"
+  >
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div
+    class="toast toast-top toast-start"
+    data-controller="removals"
+    data-action="animationend->removals#remove"
+  >
+      <div class="alert alert-error">
+        <%= alert %>
+      </div>
+  </div>
+<% end %>

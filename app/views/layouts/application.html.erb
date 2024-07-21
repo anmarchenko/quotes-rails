@@ -41,21 +41,9 @@
       </div>
     </div>
     <main class="p-10 prose">
-      <% if notice %>
-        <div class="toast toast-top toast-start">
-            <div class="alert alert-info">
-              <%= notice %>
-            </div>
-        </div>
-      <% end %>
-
-      <% if alert %>
-        <div class="toast toast-top toast-start">
-            <div class="alert alert-info">
-              <%= alert %>
-            </div>
-        </div>
-      <% end %>
+      <div id="flash">
+        <%= render "layouts/flash" %>
+      </div>
 
       <%= yield %>
     </main>
