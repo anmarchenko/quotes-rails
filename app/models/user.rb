@@ -8,6 +8,7 @@ class User < ApplicationRecord
     password_salt.last(10)
   end
 
+  belongs_to :company
   has_many :sessions, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP}

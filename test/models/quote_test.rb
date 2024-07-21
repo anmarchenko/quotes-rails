@@ -4,17 +4,17 @@ class QuoteTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
 
   test "should not save quote without name" do
-    quote = Quote.new
+    quote = build(:quote, name: nil)
     assert_not quote.save
   end
 
-  test "should save quote with name" do
-    quote = Quote.new(name: "Test quote")
+  test "should save quote with name and company" do
+    quote = build(:quote)
     assert quote.save
   end
 
   test "should broadcast to quotes" do
-    quote = Quote.new(name: "Test quote")
+    quote = build(:quote)
 
     assert_turbo_stream_broadcasts("quotes", count: 1) do
       perform_enqueued_jobs do
@@ -24,8 +24,8 @@ class QuoteTest < ActiveSupport::TestCase
   end
 
   test "should order quotes by newest" do
-    quote1 = Quote.create(name: "First quote")
-    quote2 = Quote.create(name: "Second quote")
+    quote1 = create(:quote, name: "First quote")
+    quote2 = create(:quote, name: "Second quote")
 
     assert_equal [quote2, quote1], Quote.order_newest.limit(2)
   end

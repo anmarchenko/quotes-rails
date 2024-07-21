@@ -18,6 +18,8 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
 
+    Companies::AssignToQuote.new(quote: @quote, user: Current.user).call
+
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: t("quotes.created") }
