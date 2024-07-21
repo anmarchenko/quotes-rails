@@ -1,0 +1,23 @@
+<p style="color: red"><%= alert %></p>
+
+<% if Current.user.verified? %>
+  <h1><%= t("emails.edit.header") %></h1>
+<% else %>
+  <h1><%= t("emails.edit.verify_email") %></h1>
+  <p><%= t("emails.edit.verify_email_description") %></p>
+  <p><%= button_to t("emails.edit.actions.resend_email"), identity_email_verification_path %></p>
+<% end %>
+
+<%= form_with(model: @user, url: identity_email_path, method: :patch) do |f| %>
+  <%= f.input :email_field, :email,
+                label: t("emails.edit.new_email"),
+                required: true, autofocus: true %>
+  <%= f.input :password_field, :password_challenge,
+                label: t("emails.edit.password_challenge"),
+                required: true %>
+
+  <div class="flex flex-row space-x-2 mt-5">
+    <%= f.submit t("emails.edit.actions.save") %>
+    <%= link_to t("back"), root_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+<% end %>

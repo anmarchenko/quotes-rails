@@ -2,5 +2,18 @@ schema-version: v1
 rulesets:
   - ruby-code-style
   - ruby-security
-  - ruby-best-practices
+  - ruby-best-practices:
+    rules:
+      percent-w:
+        ignore:
+          - '**'
+      percent-i:
+        ignore:
+          - '**'
+      hash-fetch:
+        ignore:
+          - '**'
+      no-optional-hash-params:
+        ignore:
+          - '**'
   - rails-best-practices

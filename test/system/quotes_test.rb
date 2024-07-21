@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class QuotesTest < ApplicationSystemTestCase
   setup do
+    @user = sign_in_as(users(:lazaro_nixon))
     @quote = Quote.order_newest.first # Reference to the first fixture quote
   end
 

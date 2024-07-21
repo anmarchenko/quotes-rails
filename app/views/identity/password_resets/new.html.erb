@@ -1,0 +1,10 @@
+<p style="color: red"><%= alert %></p>
+
+<h1><%= t("password_resets.new.header") %> </h1>
+
+<%= form_with(url: identity_password_reset_path) do |f| %>
+  <%= f.input :email_field, :email,
+                label: t("email"),
+                required: true, autofocus: true %>
+  <%= f.submit t("password_resets.new.action"), class: "mt-5" %>
+<% end %>

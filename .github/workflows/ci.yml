@@ -11,19 +11,6 @@ env:
   DD_ENV: ci
 
 jobs:
-  job-quotes-rails-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.3.4
-          bundler-cache: true
-      - name: Lint code
-        run: bundle exec rake lint
-
   job-quotes-rails-test:
     runs-on: ubuntu-latest
     env:

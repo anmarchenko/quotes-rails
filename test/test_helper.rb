@@ -15,16 +15,17 @@ if ENV["DD_ENV"] == "ci"
   end
 end
 
-module ActiveSupport
-  class TestCase
-    include FactoryBot::Syntax::Methods
+class ActiveSupport::TestCase
+  include FactoryBot::Syntax::Methods
 
-    # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+  # Run tests in parallel with specified workers
+  parallelize(workers: :number_of_processors)
 
-    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-    fixtures :all
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+  def sign_in_as(user)
+    post(sign_in_url, params: {email: user.email, password: "Secret1*3*5*"})
+    user
   end
 end

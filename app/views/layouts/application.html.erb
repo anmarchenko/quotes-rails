@@ -13,29 +13,50 @@
   <body>
     <div class="navbar px-10">
       <div class="flex-1 text-lg">
-        Quotify App
+        <%= link_to "Quotify App", root_path %>
       </div>
       <div class="flex-none gap-2">
-        <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-              <img alt="Tailwind CSS Navbar component" src="https://avatars.githubusercontent.com/u/426400?v=4" />
+        <% if Current.user %>
+          <div id="current_user_menu" class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar placeholder">
+              <div class="bg-neutral text-neutral-content w-10 rounded-full">
+                <span class="text-3xl">
+                  <%= Current.user.email.capitalize.first %>
+                </span>
+              </div>
             </div>
+            <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+              <li>
+                <%= link_to "Change password", edit_password_path %>
+              </li>
+              <li>
+                <%= link_to "Change email address", edit_identity_email_path %>
+              </li>
+              <li>
+                <%= link_to "Log out", Current.session, data: {turbo_method: :delete} %>
+              </li>
+            </ul>
           </div>
-          <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-            <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+        <% end %>
       </div>
     </div>
     <main class="p-10 prose">
+      <% if notice %>
+        <div class="toast toast-top toast-start">
+            <div class="alert alert-info">
+              <%= notice %>
+            </div>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="toast toast-top toast-start">
+            <div class="alert alert-info">
+              <%= alert %>
+            </div>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>

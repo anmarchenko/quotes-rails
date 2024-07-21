@@ -1,0 +1,22 @@
+<p style="color: red"><%= alert %></p>
+
+<h1><%= t("passwords.edit.header") %></h1>
+
+<%= form_with(model: @user, url: password_path, method: :patch) do |f| %>
+  <%= f.input :password_field, :password_challenge,
+                label: t("passwords.edit.password_challenge"),
+                required: true %>
+
+  <%= f.input :password_field, :password,
+                label: t("passwords.edit.password"),
+                required: true %>
+
+  <%= f.input :password_field, :password_confirmation,
+              label: t("passwords.edit.password_confirmation"),
+              required: true %>
+
+  <div class="flex flex-row space-x-2 mt-5">
+    <%= f.submit t("passwords.edit.action") %>
+    <%= link_to t("back"), root_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+<% end %>

@@ -28,7 +28,12 @@
 #       enabled: "ON"
 
 en:
-  hello: 'Hello world'
+  email: Email
+  password: Password
+  back: Back
+  forms:
+    save: 'Save'
+    cancel: 'Cancel'
   quotes:
     index:
       header: 'My quotes'
@@ -43,6 +48,58 @@ en:
     created: 'Quote was successfully created.'
     updated: 'Quote was successfully updated.'
     destroyed: 'Quote was successfully destroyed.'
-  forms:
-    save: 'Save'
-    cancel: 'Cancel'
+  passwords:
+    changed: 'Your password has been changed'
+  registrations:
+    action: 'Sign up'
+    created: 'Welcome! You have signed up successfully'
+    fields:
+      password_confirmation: 'Password (again)'
+  sessions:
+    created: 'Signed in successfully'
+    invalid: 'That email or password is incorrect'
+    logout: 'That session has been logged out'
+    actions:
+      sign_in: 'Sign in'
+      sign_up: 'Sign up'
+      forgot_password: 'Forgot your password?'
+  email_verifications:
+    created: 'We sent a verification email to your email address'
+    verified: 'Thank you for verifying your email address'
+    invalid: 'That email verification token is invalid'
+  emails:
+    updated: 'Your email has been changed'
+    edit:
+      actions:
+        save: 'Save changes'
+        resend_email: 'Re-send verification email'
+      header: 'Change your email'
+      verify_email: 'Verify your email'
+      verify_email_description: "We sent a verification email to the address below. Check that email and follow those instructions to confirm it's your email address."
+      password_challenge: 'Enter your password'
+      new_email: 'New email'
+  password_resets:
+    new:
+      header: 'Forgot your password?'
+      action: 'Send password reset email'
+    edit:
+      header: 'Reset your password'
+      action: 'Save changes'
+    created: 'Check your email for reset instructions'
+    not_verified: "You can't reset your password until you verify your email"
+    updated: 'Your password was reset successfully. Please sign in'
+    invalid: 'That password reset link is invalid'
+  passwords:
+    changed: 'Your password has been changed'
+    edit:
+      header: 'Change your password'
+      action: 'Save changes'
+      password_challenge: 'Enter your current password'
+      password: 'New password'
+      password_confirmation: 'Confirm new password'
+  mailers:
+    user_mailer:
+      password_reset:
+        subject: 'Reset your password'
+      email_verification:
+        subject: 'Verify your email'

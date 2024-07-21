@@ -33,7 +33,7 @@ gem "cssbundling-rails"
 gem "jbuilder"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[windows jruby]
@@ -73,6 +73,9 @@ group :development do
 
   # Use vernier as local profiler (production profiling is done by Datadog)
   gem "vernier", "~> 1.0"
+
+  # render mails as HTML in development
+  gem "letter_opener"
 end
 
 group :test do

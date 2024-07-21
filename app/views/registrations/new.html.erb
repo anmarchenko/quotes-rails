@@ -1,0 +1,17 @@
+<h1><%= t("registrations.action") %></h1>
+
+<%= form_with model: @user, url: sign_up_path, autocomplete: "off" do |f| %>
+  <%= f.input :email_field, :email,
+                label: t("email"),
+                required: true, autofocus: true %>
+
+  <%= f.input :password_field, :password,
+                label: t("password"),
+                required: true %>
+
+  <%= f.input :password_field, :password_confirmation,
+              label: t("registrations.fields.password_confirmation"),
+              required: true %>
+
+  <%= f.submit t("registrations.action"), class: "mt-5" %>
+<% end %>
