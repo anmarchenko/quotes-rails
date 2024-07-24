@@ -12,7 +12,12 @@ if ENV["DD_ENV"] == "ci"
     c.service = "quotes-rails"
     c.ci.instrument :minitest
 
-    c.tracing.instrument :rails
+    c.tracing.instrument :active_record
+    c.tracing.instrument :active_support
+    c.tracing.instrument :action_cable
+    c.tracing.instrument :action_mailer
+    c.tracing.instrument :action_view
+    c.tracing.instrument :active_job
   end
 end
 
