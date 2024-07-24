@@ -2,7 +2,7 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
 
   def index
-    @quotes = Quote.order_newest
+    @quotes = Current.company.quotes.order_newest
   end
 
   def show
@@ -16,9 +16,7 @@ class QuotesController < ApplicationController
   end
 
   def create
-    @quote = Quote.new(quote_params)
-
-    Companies::AssignToQuote.new(quote: @quote, user: Current.user).call
+    @quote = Current.company.quotes.build(quote_params)
 
     if @quote.save
       respond_to do |format|
@@ -53,7 +51,7 @@ class QuotesController < ApplicationController
   private
 
   def set_quote
-    @quote = Quote.find(params.fetch(:id))
+    @quote = Current.company.quotes.find(params.fetch(:id))
   end
 
   def quote_params

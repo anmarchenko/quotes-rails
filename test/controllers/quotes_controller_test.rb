@@ -13,7 +13,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "index orders the newest quote first" do
-    new_quote = create(:quote, name: "New quote")
+    new_quote = create(:quote, name: "New quote", company: companies(:kpmg))
 
     get quotes_url
 
