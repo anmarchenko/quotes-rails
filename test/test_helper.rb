@@ -6,14 +6,13 @@ require "factory_bot_rails"
 # Only activates test instrumentation on CI
 if ENV["DD_ENV"] == "ci"
   require "datadog/ci"
-  require "datadog/auto_instrument"
 
   Datadog.configure do |c|
     c.ci.enabled = true
     c.service = "quotes-rails"
     c.ci.instrument :minitest
 
-    c.tracing.instrument :active_record
+    c.tracing.instrument :rails
   end
 end
 
