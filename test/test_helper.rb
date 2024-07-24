@@ -12,6 +12,8 @@ if ENV["DD_ENV"] == "ci"
     c.ci.enabled = true
     c.service = "quotes-rails"
     c.ci.instrument :minitest
+
+    c.tracing.instrument :active_record
   end
 end
 
