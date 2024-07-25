@@ -6,16 +6,16 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "index lists all quotes" do
-    get root_url
+    get quotes_url
 
     assert_response :success
     assert_select "h2", count: Quote.count
   end
 
   test "index orders the newest quote first" do
-    new_quote = create(:quote, name: "New quote")
+    new_quote = create(:quote, name: "New quote", company: companies(:kpmg))
 
-    get root_url
+    get quotes_url
 
     assert_response :success
     quotes = assert_select "h2"

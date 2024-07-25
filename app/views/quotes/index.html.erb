@@ -1,4 +1,4 @@
-<%= turbo_stream_from "quotes" %>
+<%= turbo_stream_from [Current.company, "quotes"] %>
 
 <h1><%= t("quotes.index.header") %></h1>
 <%= link_to "New quote",

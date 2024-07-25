@@ -1,10 +1,27 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 lazaro_nixon:
+  company: kpmg
   email: lazaronixon@hotmail.com
   password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
   verified: true
 bunny:
+  company: kpmg
   email: bunny@hamsters.test
   password_digest: <%= BCrypt::Password.create("test1234") %>
+  verified: true
+accountant:
+  company: kpmg
+  email: accountant@kpmg.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+  verified: true
+manager:
+  company: kpmg
+  email: manager@kpmg.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+  verified: true
+eavesdropper:
+  company: pwc
+  email: eavesdropper@pwc.com
+  password_digest: <%= BCrypt::Password.create("password") %>
   verified: true

@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  skip_before_action :authenticate
+  skip_before_action :require_authentication
 
   def new
     @user = User.new
@@ -7,6 +7,9 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+    # company assignment
+    Companies::AssignToUser.new(@user).call
 
     if @user.save
       session_record = @user.sessions.create!

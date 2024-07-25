@@ -13,7 +13,10 @@
   <body>
     <div class="navbar px-10">
       <div class="flex-1 text-lg">
-        <%= link_to "Quotify App", root_path %>
+        <%= link_to "Quotify App", root_path %>&nbsp;
+        <% if Current.session %>
+         (for <%= Current.company.name %>)
+        <% end %>
       </div>
       <div class="flex-none gap-2">
         <% if Current.user %>

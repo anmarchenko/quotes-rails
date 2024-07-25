@@ -23,7 +23,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to sign_in_url(email_hint: @user.email)
     assert_equal "That email or password is incorrect", flash[:alert]
 
-    get root_url
+    get quotes_url
     assert_redirected_to sign_in_url
   end
 
@@ -34,6 +34,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
 
     follow_redirect!
+
+    get quotes_url
     assert_redirected_to sign_in_url
   end
 end
