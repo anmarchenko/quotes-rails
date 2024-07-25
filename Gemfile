@@ -71,9 +71,6 @@ group :development do
   gem "ruby-lsp"
   gem "ruby-lsp-rails"
 
-  # Use vernier as local profiler (production profiling is done by Datadog)
-  gem "vernier", "~> 1.0"
-
   # render mails as HTML in development
   gem "letter_opener"
 end
