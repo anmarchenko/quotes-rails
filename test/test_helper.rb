@@ -12,6 +12,7 @@ if ENV["DD_ENV"] == "ci"
     c.service = "quotes-rails"
     c.ci.instrument :minitest
 
+    # TODO: debug this later - why auto instrumentation didn't work in this case?
     c.tracing.instrument :active_record
     c.tracing.instrument :active_support
     c.tracing.instrument :action_cable
