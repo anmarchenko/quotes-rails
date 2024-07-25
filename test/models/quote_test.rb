@@ -16,7 +16,7 @@ class QuoteTest < ActiveSupport::TestCase
   test "should broadcast to quotes" do
     quote = build(:quote)
 
-    assert_turbo_stream_broadcasts("quotes", count: 1) do
+    assert_turbo_stream_broadcasts([quote.company, "quotes"], count: 1) do
       perform_enqueued_jobs do
         quote.save
       end
