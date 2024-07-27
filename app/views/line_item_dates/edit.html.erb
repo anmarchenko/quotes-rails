@@ -1,0 +1,5 @@
+<%= link_to sanitize("&larr; Back to quote"), quote_path(@quote) %>
+
+<h1>Edit date</h1>
+
+<%= render "form", quote: @quote, line_item_date: @line_item_date %>
