@@ -14,4 +14,27 @@
                   form: { data: { turbo_confirm: "Are you sure?" } },
                   class: "btn btn-secondary btn-sm" %>
   </div>
+
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th>Article</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          <%= link_to "Add item",
+                      [:new, quote, line_item_date, :line_item],
+                      class: "btn btn-primary btn-sm" %>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
 <% end %>

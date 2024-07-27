@@ -6,7 +6,7 @@ class QuotesController < ApplicationController
   end
 
   def show
-    @line_item_dates = @quote.line_item_dates.ordered
+    @line_item_dates = @quote.line_item_dates.preload(:line_items).ordered
   end
 
   def new
@@ -52,7 +52,7 @@ class QuotesController < ApplicationController
   private
 
   def set_quote
-    @quote = Current.company.quotes.preload(:line_item_dates).find(params.fetch(:id))
+    @quote = Current.company.quotes.find(params.fetch(:id))
   end
 
   def quote_params

@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <b><%= line_item.name %></b>
+    <br/>
+    <span class="italic text-sm"><%= simple_format line_item.description %></span>
+  </td>
+  <td>
+    <%= line_item.quantity %>
+  </td>
+  <td>
+    <%= number_to_currency line_item.unit_price %>
+  </td>
+  <td class="flex flex-row space-x-4">
+    <%= link_to "Edit",
+                [:edit, quote, line_item_date, line_item],
+                class: "btn btn-primary btn-sm" %>
+    <%= button_to "Delete",
+                  [quote, line_item_date, line_item],
+                  method: :delete,
+                  class: "btn btn-secondary btn-sm" %>
+  </td>
+</tr>

@@ -8,6 +8,7 @@ class LineItemDatesController < ApplicationController
 
   def create
     @line_item_date = @quote.line_item_dates.build(line_item_date_params)
+    @line_item_date.line_items = []
 
     if @line_item_date.save
       respond_to do |format|
@@ -53,6 +54,6 @@ class LineItemDatesController < ApplicationController
   end
 
   def set_line_item_date
-    @line_item_date = @quote.line_item_dates.find(params[:id])
+    @line_item_date = @quote.line_item_dates.preload(:line_items).find(params[:id])
   end
 end
