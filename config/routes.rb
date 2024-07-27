@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   end
 
   # resources
-  resources :quotes
+  resources :quotes do
+    resources :line_item_dates, except: [:index, :show]
+  end
 end
