@@ -1,0 +1,8 @@
+<%= form_with model: [quote, line_item_date] do |f| %>
+  <%= f.input :date_field, :date, label: "Date", autofocus: true  %>
+
+  <div class="flex flex-row space-x-2 mt-5">
+    <%= f.submit t("forms.save") %>
+    <%= link_to t("forms.cancel"), quote_path(quote), class: "btn btn-secondary btn-sm" %>
+  </div>
+<% end %>
