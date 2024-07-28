@@ -15,27 +15,13 @@
                   class: "btn btn-secondary btn-sm" %>
   </div>
 
-  <table class="table mt-5">
-    <thead>
-      <tr>
-        <th>Article</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="4">
-          <%= link_to "Add item",
-                      [:new, quote, line_item_date, :line_item],
-                      class: "btn btn-primary btn-sm",
-                      data: { turbo_frame: "_top" } %>
-        </th>
-      </tr>
-    </tfoot>
-  </table>
+  <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
+    <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
+  <% end %>
+
+  <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
+  <%= link_to "Add item",
+              [:new, quote, line_item_date, :line_item],
+              class: "btn btn-primary btn-sm mt-5",
+              data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) } %>
 <% end %>

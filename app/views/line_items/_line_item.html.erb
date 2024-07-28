@@ -1,16 +1,11 @@
-<tr>
-  <td>
-    <b><%= line_item.name %></b>
-    <br/>
-    <span class="italic text-sm"><%= simple_format line_item.description %></span>
-  </td>
-  <td>
-    <%= line_item.quantity %>
-  </td>
-  <td>
-    <%= number_to_currency line_item.unit_price %>
-  </td>
-  <td class="flex flex-row space-x-4">
+<div class="flex flex-col mt-5">
+  <div class="flex flex-row space-x-4">
+    <div>
+      Article: <b><%= line_item.name %></b>
+    </div>
+    <div>
+      <%= line_item.quantity %> x <%= number_to_currency line_item.unit_price %>
+    </div>
     <%= link_to "Edit",
                 [:edit, quote, line_item_date, line_item],
                 data: { turbo_frame: "_top" },
@@ -20,5 +15,8 @@
                   method: :delete,
                   form: { data: { turbo_frame: "_top" } },
                   class: "btn btn-secondary btn-sm" %>
-  </td>
-</tr>
+  </div>
+  <div class="italic">
+    <%= simple_format line_item.description %>
+  </div>
+</div>
