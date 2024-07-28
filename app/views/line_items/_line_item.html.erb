@@ -13,10 +13,12 @@
   <td class="flex flex-row space-x-4">
     <%= link_to "Edit",
                 [:edit, quote, line_item_date, line_item],
+                data: { turbo_frame: "_top" },
                 class: "btn btn-primary btn-sm" %>
     <%= button_to "Delete",
                   [quote, line_item_date, line_item],
                   method: :delete,
+                  form: { data: { turbo_frame: "_top" } },
                   class: "btn btn-secondary btn-sm" %>
   </td>
 </tr>

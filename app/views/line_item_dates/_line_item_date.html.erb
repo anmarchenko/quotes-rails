@@ -32,7 +32,8 @@
         <th colspan="4">
           <%= link_to "Add item",
                       [:new, quote, line_item_date, :line_item],
-                      class: "btn btn-primary btn-sm" %>
+                      class: "btn btn-primary btn-sm",
+                      data: { turbo_frame: "_top" } %>
         </th>
       </tr>
     </tfoot>
