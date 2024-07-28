@@ -1,19 +1,21 @@
 <%= turbo_frame_tag line_item_date do %>
-  <h2>
-    <%= l(line_item_date.date, format: :long) %>
-  </h2>
+  <%= turbo_frame_tag dom_id(line_item_date, :edit) do %>
+    <h2>
+      <%= l(line_item_date.date, format: :long) %>
+    </h2>
 
-  <div class="flex flex-row space-x-4">
-    <%= link_to "Edit",
-                [:edit, quote, line_item_date],
-                class: "btn btn-primary btn-sm" %>
+    <div class="flex flex-row space-x-4">
+      <%= link_to "Edit",
+                  [:edit, quote, line_item_date],
+                  class: "btn btn-primary btn-sm" %>
 
-    <%= button_to "Delete",
-                  [quote, line_item_date],
-                  method: :delete,
-                  form: { data: { turbo_confirm: "Are you sure?" } },
-                  class: "btn btn-secondary btn-sm" %>
-  </div>
+      <%= button_to "Delete",
+                    [quote, line_item_date],
+                    method: :delete,
+                    form: { data: { turbo_confirm: "Are you sure?" } },
+                    class: "btn btn-secondary btn-sm" %>
+    </div>
+  <% end %>
 
   <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
     <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
