@@ -29,4 +29,8 @@ class QuoteTest < ActiveSupport::TestCase
 
     assert_equal [quote2, quote1], Quote.order_newest.limit(2)
   end
+
+  test "#total_price returns the sum of the total price of all line items" do
+    assert_equal 2500, quotes(:first).total_price
+  end
 end

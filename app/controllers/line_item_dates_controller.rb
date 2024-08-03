@@ -50,7 +50,7 @@ class LineItemDatesController < ApplicationController
   end
 
   def set_quote
-    @quote = Current.company.quotes.find(params.fetch(:quote_id))
+    @quote = Current.company.quotes.preload(:line_items, line_item_dates: :line_items).find(params.fetch(:quote_id))
   end
 
   def set_line_item_date

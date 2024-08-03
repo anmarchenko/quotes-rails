@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: %i[show edit update]
-  before_action :set_quote_with_preload, only: %i[destroy]
+  before_action :set_quote, only: %i[edit update]
+  before_action :set_quote_with_preload, only: %i[destroy show]
 
   def index
     @quotes = Current.company.quotes.order_newest
@@ -57,7 +57,7 @@ class QuotesController < ApplicationController
   end
 
   def set_quote_with_preload
-    @quote = Current.company.quotes.preload(line_item_dates: :line_items).find(params.fetch(:id))
+    @quote = Current.company.quotes.preload(:line_items, line_item_dates: :line_items).find(params.fetch(:id))
   end
 
   def quote_params
