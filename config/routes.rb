@@ -25,4 +25,9 @@ Rails.application.routes.draw do
       resources :line_items, except: [:index, :show]
     end
   end
+
+  # Debugging tools - only available in development
+  if defined? Debugbar
+    mount Debugbar::Engine => Debugbar.config.prefix
+  end
 end

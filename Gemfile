@@ -73,6 +73,9 @@ group :development do
 
   # render mails as HTML in development
   gem "letter_opener"
+
+  # local dev tools
+  gem "debugbar"
 end
 
 group :test do
