@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   before_action :set_quote
   before_action :set_line_item_date
   before_action :set_line_item, only: [:edit, :update, :destroy]
+
   def new
     @line_item = @line_item_date.line_items.build
   end
@@ -49,7 +50,7 @@ class LineItemsController < ApplicationController
   end
 
   def set_quote
-    @quote = Current.company.quotes.find(params[:quote_id])
+    @quote = Current.company.quotes.preload(:line_items, line_item_dates: :line_items).find(params[:quote_id])
   end
 
   def set_line_item_date
