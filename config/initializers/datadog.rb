@@ -1,4 +1,4 @@
-if Rails.env.production?
+unless Rails.env.test?
   require "datadog/auto_instrument"
   Datadog.configure do |c|
     c.env = "local"
