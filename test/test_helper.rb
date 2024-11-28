@@ -3,25 +3,6 @@ require_relative "../config/environment"
 require "rails/test_help"
 require "factory_bot_rails"
 
-# Only activates test instrumentation on CI
-if ENV["DD_ENV"] == "ci"
-  require "datadog/ci"
-
-  Datadog.configure do |c|
-    c.ci.enabled = true
-    c.service = "quotes-rails"
-    c.ci.instrument :minitest
-
-    # TODO: debug this later - why auto instrumentation didn't work in this case?
-    c.tracing.instrument :active_record
-    c.tracing.instrument :active_support
-    c.tracing.instrument :action_cable
-    c.tracing.instrument :action_mailer
-    c.tracing.instrument :action_view
-    c.tracing.instrument :active_job
-  end
-end
-
 class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods
 
