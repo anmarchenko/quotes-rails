@@ -18,7 +18,7 @@ jobs:
           ruby-version: 3.3.4
           bundler-cache: true
       - name: Configure Datadog Test Optimization
-        uses: datadog/test-visibility-github-action@aa13f4bcf4947c0b902f9718503766f35ab952da
+        uses: datadog/test-visibility-github-action@c8298a7b64a3ed7f351ee74b3e43eb5dc7d80405
         with:
           languages: ruby
           api_key: ${{ secrets.DD_API_KEY }}
