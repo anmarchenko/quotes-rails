@@ -20,7 +20,6 @@ jobs:
       - name: Configure Datadog Test Optimization
         uses: datadog/test-visibility-github-action@7855b1d0e0fd27b294f39a7157199aa6be74e49b
         with:
-          service: quotes
           languages: ruby
           api_key: ${{ secrets.DD_API_KEY }}
           site: datadoghq.eu
