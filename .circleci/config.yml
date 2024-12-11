@@ -3,20 +3,6 @@ orbs:
   node: circleci/node@7
   ruby: circleci/ruby@2
 jobs:
-  build:
-    docker:
-      - image: cimg/ruby:3.3-node
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-  checking:
-    docker:
-      - image: cimg/ruby:3.3-node
-    steps:
-      - checkout
-      - ruby/install-deps
   test:
     docker:
       - image: cimg/ruby:3.3-node
@@ -27,7 +13,6 @@ jobs:
       - checkout
       - ruby/install-deps
       - node/install-packages:
-          cache-key: yarn.lock
           pkg-manager: yarn
       - run:
           command: bundle exec rails db:schema:load --trace
