@@ -20,7 +20,7 @@ jobs:
           site: datadoghq.eu
       - run:
           name: Run tests
-          command: DD_TRACE_DEBUG=1 bundle exec rake test
+          command: bundle exec rake test
 workflows:
   version: 2
   ci:
