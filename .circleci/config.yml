@@ -8,6 +8,7 @@ jobs:
       - image: cimg/ruby:3.3.4-node
     environment:
       RAILS_ENV: test
+      DD_ENV: ci
     steps:
       - checkout
       - ruby/install-deps
