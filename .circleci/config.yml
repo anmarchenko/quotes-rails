@@ -4,17 +4,17 @@ orbs:
   ruby: circleci/ruby@2
 jobs:
   - test:
-    docker:
-      - image: cimg/ruby:3.3-node
-    environment:
-      RAILS_ENV: test
-    parallelism: 3
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-      - ruby/rspec-test
+      docker:
+        - image: cimg/ruby:3.3-node
+      environment:
+        RAILS_ENV: test
+      parallelism: 3
+      steps:
+        - checkout
+        - ruby/install-deps
+        - node/install-packages:
+            pkg-manager: yarn
+        - ruby/rspec-test
 workflows:
   version: 2
   ci:
