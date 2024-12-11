@@ -14,16 +14,9 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-      - run:
-          command: bundle exec rails db:schema:load --trace
-          name: Database setup
       - ruby/rspec-test:
           include: spec/**/*_spec.rb
 workflows:
   build_and_test:
     jobs:
-      - build
-      - checking
       - test:
-          requires:
-            - build
