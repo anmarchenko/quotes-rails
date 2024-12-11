@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@7
   ruby: circleci/ruby@2
 jobs:
-  test:
+  - test:
     docker:
       - image: cimg/ruby:3.3-node
     environment:
