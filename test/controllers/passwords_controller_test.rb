@@ -21,4 +21,8 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_select "div.text-red-500", /is invalid/
   end
+
+  test "should flake" do
+    assert rand(2) == 1
+  end
 end
