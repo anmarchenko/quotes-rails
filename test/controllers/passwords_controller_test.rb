@@ -23,6 +23,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should flake" do
+    # flakes
     assert rand(2) == 1
   end
 end
