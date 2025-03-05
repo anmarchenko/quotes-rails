@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.5"
+ruby "3.4.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0"
@@ -46,6 +46,8 @@ gem "image_processing", "~> 1.2"
 
 # Observability
 gem "datadog", require: "datadog/auto_instrument"
+
+# gem "datadog-ci", path: "../../p/datadog-ci-rb"
 
 group :development, :test do
   # # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

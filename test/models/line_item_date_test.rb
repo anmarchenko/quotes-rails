@@ -8,4 +8,14 @@ class LineItemDateTest < ActiveSupport::TestCase
   test "#previous_date returns nil when the quote has no previous date" do
     assert_nil line_item_dates(:today).previous_date
   end
+
+  test "should not save line item date without a date" do
+    line_item_date = line_item_dates(:today)
+    line_item_date.date = nil
+    assert_not line_item_date.save
+  end
+
+  test "#ordered returns line item dates ordered by date" do
+    assert LineItemDate.ordered == [line_item_dates(:today), line_item_dates(:next_week)]
+  end
 end
