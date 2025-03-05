@@ -8,6 +8,7 @@ class CompanyTest < ActiveSupport::TestCase
 
   test "should save company with valid attributes" do
     company = build(:company)
+
     assert company.save
   end
 end
