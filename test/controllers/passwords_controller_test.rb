@@ -26,6 +26,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     patch password_url, params: {user: {password_challenge: "Secret1*3*5*", password: "Secret6*4*2*", password_confirmation: "Secret6*4*1*"}}
 
     assert_response :unprocessable_entity
+
     assert_select "div.text-red-500", /doesn't match/
   end
 end
