@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :clients
+
   # Debugging tools - only available in development
   if defined? Debugbar
     mount Debugbar::Engine => Debugbar.config.prefix

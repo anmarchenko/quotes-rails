@@ -1,0 +1,8 @@
+<%= form_with model: client do |f| %>
+  <%= f.input :text_field, :name, label: "Name", autofocus: true %>
+
+  <div class="flex flex-row space-x-2 mt-5">
+    <%= f.submit "Save" %>
+    <%= link_to "Cancel", clients_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+<% end %>
