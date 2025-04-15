@@ -23,6 +23,10 @@ module QuotesRails
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.colorize_logging = false
+
+    config.semantic_logger.application = "quotes_rails"
+    config.semantic_logger.environment = Rails.env
 
     config.generators.after_generate do |files|
       parsable_files = files.filter { |file| file.end_with?(".rb") }

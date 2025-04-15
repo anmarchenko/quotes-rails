@@ -1,6 +1,4 @@
 unless Rails.env.test?
-  require "datadog/auto_instrument"
-
   Datadog.configure do |c|
     c.env = "local"
     c.service = "quotes-rails"
