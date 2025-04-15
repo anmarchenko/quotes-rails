@@ -46,8 +46,10 @@ gem "image_processing", "~> 1.2"
 
 # Observability
 gem "datadog", require: "datadog/auto_instrument"
-
 # gem "datadog-ci", path: "../../p/datadog-ci-rb"
+
+# structured logging
+gem "rails_semantic_logger", "~> 4.0"
 
 group :development, :test do
   # # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
