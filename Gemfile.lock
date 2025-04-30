@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DataDog/datadog-ci-rb.git
-  revision: 5522d3d71d347054b8dc5447805ff28e45892927
+  revision: f828aa11d1c0cba68c3e10cdc0bae8c39ce42908
   ref: anmarchenko/impacted_tests_detection
   specs:
     datadog-ci (1.16.0)
