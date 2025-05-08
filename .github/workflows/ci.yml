@@ -2,7 +2,7 @@ name: pipeline-quotes-rails-ci
 on:
   push:
     branches:
-      - **
+      - '**'
 
 jobs:
   job-quotes-rails-test:
