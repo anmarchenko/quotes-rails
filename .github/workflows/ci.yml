@@ -1,8 +1,8 @@
 name: pipeline-quotes-rails-ci
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - **
 
 jobs:
   job-quotes-rails-test:
