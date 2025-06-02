@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/DataDog/datadog-ci-rb.git
+  revision: 50e7443a4059b82324657360559eed6a58d7e33b
+  ref: anmarchenko/impacted_tests_git_base_sha_v2
+  specs:
+    datadog-ci (1.17.0)
+      datadog (~> 2.4)
+      drb
+      msgpack
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -408,6 +418,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   datadog
+  datadog-ci!
   debug
   debugbar
   factory_bot_rails
