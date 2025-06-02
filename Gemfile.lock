@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/DataDog/datadog-ci-rb.git
-  revision: dbfa1c3aaef1bd228bbb889e34c792cc7767bd8f
-  ref: anmarchenko/impacted_tests_detection
+  revision: fea0534f4158fd5abae847b2e1df42ef3b604edb
+  ref: anmarchenko/impacted_tests_git_base_sha_v2
   specs:
-    datadog-ci (1.16.0)
+    datadog-ci (1.17.0)
       datadog (~> 2.4)
       drb
       msgpack
@@ -109,8 +109,8 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.2)
       railties (>= 6.0.0)
-    datadog (2.15.0)
-      datadog-ruby_core_source (~> 3.4)
+    datadog (2.16.0)
+      datadog-ruby_core_source (~> 3.4, >= 3.4.1)
       libdatadog (~> 16.0.1.1.0)
       libddwaf (~> 1.22.0.0.2)
       logger
@@ -123,7 +123,7 @@ GEM
     debugbar (0.4.3)
       actioncable
       rails
-    drb (2.2.1)
+    drb (2.2.3)
     erubi (1.13.1)
     factory_bot (6.5.1)
       activesupport (>= 6.1.0)

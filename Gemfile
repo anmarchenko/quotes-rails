@@ -47,7 +47,7 @@ gem "image_processing", "~> 1.2"
 # Observability
 gem "datadog", require: "datadog/auto_instrument"
 # gem "datadog-ci", path: "../../p/datadog-ci-rb"
-gem "datadog-ci", github: "DataDog/datadog-ci-rb", ref: "anmarchenko/impacted_tests_detection"
+gem "datadog-ci", github: "DataDog/datadog-ci-rb", ref: "anmarchenko/impacted_tests_git_base_sha_v2"
 
 # structured logging
 gem "rails_semantic_logger", "~> 4.0"

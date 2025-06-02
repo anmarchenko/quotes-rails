@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "Datadog (alpha)": {
-      "command": "/Users/andrey.marchenko/.cursor/extensions/datadog.datadog-vscode-2.3.1/resources/scripts/mcp/stdio-app.mjs",
+    "Datadog (alpha2)": {
+      "command": "/Users/andrey.marchenko/.cursor/extensions/datadog.datadog-vscode-2.5.0/resources/scripts/mcp/stdio-app.mjs",
       "args": [
-        "59677"
+        "56957"
       ]
     }
   }
