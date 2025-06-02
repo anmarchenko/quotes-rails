@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
+      DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,8 +30,8 @@ jobs:
   job-quotes-rails-system-test:
     runs-on: ubuntu-latest
     env:
-      DD_CIVISIBILITY_ITR_ENABLED: false
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
+      DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
