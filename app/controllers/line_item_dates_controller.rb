@@ -14,7 +14,6 @@ class LineItemDatesController < ApplicationController
     if @line_item_date.save
       respond_to do |format|
         format.html { redirect_to quote_path(@quote), notice: "Date was successfully created." }
-
         format.turbo_stream { flash.now[:notice] = "Date was successfully created." }
       end
     else

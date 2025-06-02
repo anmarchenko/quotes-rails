@@ -5,7 +5,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get root_url
 
     assert_response :success
-
     assert_select "a", "Sign in"
   end
 
