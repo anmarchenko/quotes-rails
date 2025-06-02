@@ -10,7 +10,6 @@ jobs:
     env:
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
       DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
-      DD_TRACE_DEBUG: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,7 +32,6 @@ jobs:
     env:
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
       DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
-      DD_TRACE_DEBUG: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
