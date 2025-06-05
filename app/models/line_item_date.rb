@@ -9,8 +9,4 @@ class LineItemDate < ApplicationRecord
   def previous_date
     quote.line_item_dates.ordered.where("date < ?", date).last
   end
-
-  def a
-    "b"
-  end
 end
