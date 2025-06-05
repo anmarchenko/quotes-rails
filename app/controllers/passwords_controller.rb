@@ -8,6 +8,7 @@ class PasswordsController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: t("passwords.changed")
     else
+
       render :edit, status: :unprocessable_entity
     end
   end
