@@ -8,7 +8,6 @@ class LineItemDatesController < ApplicationController
 
   def create
     @line_item_date = @quote.line_item_dates.build(line_item_date_params)
-
     @line_item_date.line_items = []
 
     if @line_item_date.save
