@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DataDog/datadog-ci-rb.git
-  revision: 50e7443a4059b82324657360559eed6a58d7e33b
+  revision: b8de7dfe19e6d9f322912293e96abfa03036bb0c
   ref: anmarchenko/impacted_tests_git_base_sha_v2
   specs:
     datadog-ci (1.17.0)
@@ -109,9 +109,9 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.2)
       railties (>= 6.0.0)
-    datadog (2.16.0)
+    datadog (2.17.0)
       datadog-ruby_core_source (~> 3.4, >= 3.4.1)
-      libdatadog (~> 16.0.1.1.0)
+      libdatadog (~> 18.1.0.1.0)
       libddwaf (~> 1.22.0.0.2)
       logger
       msgpack
@@ -165,9 +165,9 @@ GEM
       logger (~> 1.6)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
-    libdatadog (16.0.1.1.0)
-    libdatadog (16.0.1.1.0-aarch64-linux)
-    libdatadog (16.0.1.1.0-x86_64-linux)
+    libdatadog (18.1.0.1.0)
+    libdatadog (18.1.0.1.0-aarch64-linux)
+    libdatadog (18.1.0.1.0-x86_64-linux)
     libddwaf (1.22.0.0.2)
       ffi (~> 1.0)
     libddwaf (1.22.0.0.2-aarch64-linux)
