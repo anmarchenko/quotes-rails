@@ -10,6 +10,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("User.count") do
       post sign_up_url, params: {user: {email: "lazaronixon@hey.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*"}}
     end
+    # this is a comment
 
     assert_redirected_to root_url
   end
