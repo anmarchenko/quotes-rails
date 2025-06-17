@@ -8,8 +8,6 @@ jobs:
       - image: cimg/ruby:3.4.1-node
     environment:
       RAILS_ENV: test
-      DD_ENV: ci
-      DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
     steps:
       - checkout
       - ruby/install-deps
