@@ -2,6 +2,7 @@ version: '2.1'
 orbs:
   node: circleci/node@7
   ruby: circleci/ruby@2
+  test-optimization-circleci-orb: datadog/test-optimization-circleci-orb@1.2.5
 jobs:
   test:
     docker:
@@ -13,9 +14,14 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
+      - test-optimization-circleci-orb/autoinstrument:
+          languages: ruby
+          site: datadoghq.eu
       - run:
           name: Run tests
           command: bundle exec rake test
+          environment:
+            DD_TEST_SESSION_NAME: circleci-tests
 workflows:
   version: 2
   ci:

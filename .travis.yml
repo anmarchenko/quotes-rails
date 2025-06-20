@@ -18,14 +18,26 @@ before_install:
 install:
   - bundle install --jobs=3 --retry=3
 
+env:
+  global:
+    - DD_CIVISIBILITY_ENABLED=true
+    - DD_CIVISIBILITY_AGENTLESS_ENABLED=true
+    - DD_SITE=datadoghq.eu
+    - DD_ENV=ci
+    - RUBYOPT="-rbundler/setup -rdatadog/ci/auto_instrument"
+
 jobs:
   include:
     - stage: 'Unit Tests'
       name: 'Rails Unit Tests'
+      env: 
+        - DD_TEST_SESSION_NAME=travis-unit-tests
       script:
         - bundle exec rake test
     - stage: 'System Tests'
       name: 'Rails System Tests'
+      env:
+        - DD_TEST_SESSION_NAME=travis-system-tests
       before_script:
         - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
       script:

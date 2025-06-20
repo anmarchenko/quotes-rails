@@ -88,4 +88,7 @@ group :test do
 
   # create objects on the fly
   gem "factory_bot_rails"
+  
+  # Datadog Test Optimization
+  gem "datadog-ci", "~> 1.0"
 end

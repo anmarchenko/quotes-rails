@@ -105,6 +105,10 @@ GEM
       libddwaf (~> 1.22.0.0.2)
       logger
       msgpack
+    datadog-ci (1.19.0)
+      datadog (~> 2.4)
+      drb
+      msgpack
     datadog-ruby_core_source (3.4.1)
     date (3.4.1)
     debug (1.10.0)
@@ -408,6 +412,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   datadog
+  datadog-ci (~> 1.0)
   debug
   debugbar
   factory_bot_rails
