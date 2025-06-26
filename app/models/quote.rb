@@ -1,5 +1,6 @@
 class Quote < ApplicationRecord
   belongs_to :company
+  belongs_to :client
   has_many :line_item_dates, dependent: :destroy
   has_many :line_items, through: :line_item_dates
 
