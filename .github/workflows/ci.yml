@@ -10,6 +10,7 @@ jobs:
     env:
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
       DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
+      DD_TEST_SESSION_NAME: 'quotes-rails-test'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -32,6 +33,7 @@ jobs:
     env:
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
       DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
+      DD_TEST_SESSION_NAME: 'quotes-rails-system-test'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
