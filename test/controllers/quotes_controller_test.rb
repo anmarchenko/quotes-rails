@@ -13,13 +13,13 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "very flaky test" do
-    if rand(10) < 8
+    if rand(10) < 5
       assert false
     end
   end
 
   test "a bit flaky test" do
-    if rand(10) < 4
+    if rand(10) < 7
       assert false
     end
   end
