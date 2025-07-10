@@ -9,6 +9,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     get quotes_url
 
     assert_response :success
+
     assert_select "h2", count: Quote.count
   end
 
