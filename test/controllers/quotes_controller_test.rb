@@ -9,7 +9,29 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     get quotes_url
 
     assert_response :success
+
     assert_select "h2", count: Quote.count
+  end
+
+  test "very flaky test" do
+    r = Random.new
+    if r.rand(10) < 5
+      assert false
+    end
+  end
+
+  test "a bit flaky test" do
+    r = Random.new
+    if r.rand(10) < 7
+      assert false
+    end
+  end
+
+  test "just a little bit flaky" do
+    r = Random.new
+    if r.rand(10) < 6
+      assert false
+    end
   end
 
   test "index orders the newest quote first" do

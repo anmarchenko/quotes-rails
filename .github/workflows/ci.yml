@@ -1,8 +1,8 @@
 name: pipeline-quotes-rails-ci
 on:
-  push:
+  pull_request:
     branches:
-      - '**'
+      - 'main'
 
 jobs:
   job-quotes-rails-test:
@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Show git log
+        run: git log --oneline -10
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
