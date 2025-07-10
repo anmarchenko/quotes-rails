@@ -12,6 +12,18 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", count: Quote.count
   end
 
+  test "very flaky test" do
+    if rand(10) < 8
+      assert false
+    end
+  end
+
+  test "a bit flaky test" do
+    if rand(10) < 4
+      assert false
+    end
+  end
+
   test "index orders the newest quote first" do
     new_quote = create(:quote, name: "New quote", company: companies(:kpmg))
 
