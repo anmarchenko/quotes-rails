@@ -89,6 +89,8 @@ jobs:
           chmod +x bin/ddtest
         env:
           GH_TOKEN: ${{ github.token }}
+      - name: precompile assets
+        run: bundle exec rake assets:precompile
       - name: Run tests
         run: bin/ddtest run
         env:
