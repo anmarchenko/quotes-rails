@@ -9,12 +9,12 @@ env:
   DD_ENV: ci
   DD_TEST_OPTIMIZATION_RUNNER_PLATFORM: ruby
   DD_TEST_OPTIMIZATION_RUNNER_FRAMEWORK: minitest
-  outputs:
-    matrix: ${{ steps.matrix.outputs.matrix }}
 
 jobs:
   plan:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby
