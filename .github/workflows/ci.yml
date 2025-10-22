@@ -4,16 +4,19 @@ on:
     branches:
       - '**'
 
+env:
+  DD_TRACE_DEBUG: 0
+  DD_ENV: ci
+  DD_TEST_OPTIMIZATION_RUNNER_PLATFORM: ruby
+  DD_TEST_OPTIMIZATION_RUNNER_FRAMEWORK: minitest
+  outputs:
+    matrix: ${{ steps.matrix.outputs.matrix }}
+
 jobs:
-  job-quotes-rails-test:
+  plan:
     runs-on: ubuntu-latest
-    env:
-      DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
-      DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
-      DD_TEST_SESSION_NAME: 'quotes-rails-test'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -25,10 +28,73 @@ jobs:
           languages: ruby
           api_key: ${{ secrets.DD_API_KEY }}
           site: datadoghq.eu
-      - name: Run tests
-        run: bundle exec rake test
+      - name: Download ddtest binary
+        run: |
+          LATEST_PRERELEASE_TAG=$(gh release list --repo DataDog/ddtest --json tagName,isPrerelease --jq '.[] | select(.isPrerelease) | .tagName' | head -n 1)
+          gh release download "$LATEST_PRERELEASE_TAG" --repo DataDog/ddtest --pattern "ddtest-linux-amd64" --dir bin
+          mv bin/ddtest-linux-amd64 bin/ddtest
+          chmod +x bin/ddtest
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Setup Datadog Test Runner
+        run: bin/ddtest plan
+        env:
+          DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
+          DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
+      - name: Set matrix output
+        id: matrix
+        run: cat .testoptimization/github/config >> $GITHUB_OUTPUT
+      - name: Upload DD artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dd-artifacts
+          path: '.testoptimization'
+          if-no-files-found: warn
+          include-hidden-files: true
 
-  job-quotes-rails-system-test:
+  test:
+    runs-on: ubuntu-latest
+    needs: [plan]
+    env:
+      DD_TEST_OPTIMIZATION_RUNNER_CI_NODE: ${{ matrix.ci_node_index }}
+      DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
+      DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download DD artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dd-artifacts
+          path: '.testoptimization'
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.1
+          bundler-cache: true
+      - name: Configure Datadog Test Optimization
+        uses: datadog/test-visibility-github-action@v2
+        with:
+          languages: ruby
+          api_key: ${{ secrets.DD_API_KEY }}
+          site: datadoghq.eu
+      - name: Download ddtest binary
+        run: |
+          LATEST_PRERELEASE_TAG=$(gh release list --repo DataDog/ddtest --json tagName,isPrerelease --jq '.[] | select(.isPrerelease) | .tagName' | head -n 1)
+          gh release download "$LATEST_PRERELEASE_TAG" --repo DataDog/ddtest --pattern "ddtest-linux-amd64" --dir bin
+          mv bin/ddtest-linux-amd64 bin/ddtest
+          chmod +x bin/ddtest
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Run tests
+        run: bin/ddtest run
+        env:
+          DD_TEST_SESSION_NAME: 'quotes-rails-test-${{ matrix.ci_node_index }}'
+
+  system-test:
     runs-on: ubuntu-latest
     env:
       DD_AGENTLESS_LOG_SUBMISSION_ENABLED: true
