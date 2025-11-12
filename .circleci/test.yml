@@ -42,7 +42,7 @@ jobs:
             export DD_TEST_SESSION_NAME="quotes-rails-ci-${NODE_INDEX}"
             export DD_TEST_OPTIMIZATION_RUNNER_CI_NODE="${NODE_INDEX}"
             echo "Running ddtest node ${NODE_INDEX}"
-            ./bin/ddtest run --platform ruby --framework minitest --ci-node "${NODE_INDEX}"
+            ./bin/ddtest run --platform ruby --framework minitest
 
 workflows:
   test:
