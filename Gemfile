@@ -5,6 +5,8 @@ ruby "3.4.1"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0"
 
+gem "openssl", ">= 3.3.1"
+
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 
@@ -47,7 +49,7 @@ gem "image_processing", "~> 1.2"
 # Observability
 gem "datadog", require: "datadog/auto_instrument"
 # gem "datadog-ci", path: "../../p/datadog-ci-rb"
-# gem "datadog-ci", github: "DataDog/datadog-ci-rb", ref: "anmarchenko/impacted_tests_git_base_sha_v2"
+# gem "datadog-ci", github: "DataDog/datadog-ci-rb", ref: "main"
 
 # structured logging
 gem "rails_semantic_logger", "~> 4.0"
