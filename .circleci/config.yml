@@ -33,7 +33,7 @@ jobs:
             chmod +x bin/ddtest
       - run:
           name: Plan tests with ddtest
-          command: ./bin/ddtest plan --platform ruby --framework minitest --command "bundle exec rake test"
+          command: ./bin/ddtest plan --platform ruby --framework minitest
           environment:
             DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
             DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
@@ -70,7 +70,7 @@ jobs:
           site: datadoghq.eu
       - run:
           name: Run tests with ddtest
-          command: ./bin/ddtest run --platform ruby --framework minitest --command "bundle exec rake test"
+          command: ./bin/ddtest run --platform ruby --framework minitest
           environment:
             DD_TEST_SESSION_NAME: 'quotes-rails-ci-${CIRCLE_NODE_INDEX:-0}'
 workflows:
