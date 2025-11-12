@@ -4,15 +4,20 @@ orbs:
   ruby: circleci/ruby@2
   test-optimization-circleci-orb: datadog/test-optimization-circleci-orb@1
 jobs:
-  test:
+  setup:
     docker:
       - image: cimg/ruby:3.4.1-node
     environment:
       RAILS_ENV: test
       DD_ENV: ci
-      DD_CIVISIBILITY_IMPACTED_TESTS_DETECTION_ENABLED: true
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_JOBS: 4
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+            - v1-bundle-
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
@@ -20,10 +25,59 @@ jobs:
           languages: ruby
           site: datadoghq.eu
       - run:
-          name: Run tests
-          command: bundle exec rake test
+          name: Download ddtest latest release
+          command: |
+            set -euo pipefail
+            mkdir -p bin
+            curl -fsSL https://github.com/DataDog/ddtest/releases/latest/download/ddtest-linux-amd64 -o bin/ddtest
+            chmod +x bin/ddtest
+      - run:
+          name: Plan tests with ddtest
+          command: ./bin/ddtest plan --platform ruby --framework minitest --command "bundle exec rake test"
+          environment:
+            DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
+            DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .testoptimization
+            - bin/ddtest
+  test:
+    docker:
+      - image: cimg/ruby:3.4.1-node
+    environment:
+      RAILS_ENV: test
+      DD_ENV: ci
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_JOBS: 4
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+            - v1-bundle-
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+      - test-optimization-circleci-orb/autoinstrument:
+          languages: ruby
+          site: datadoghq.eu
+      - run:
+          name: Run tests with ddtest
+          command: ./bin/ddtest run --platform ruby --framework minitest --command "bundle exec rake test"
+          environment:
+            DD_TEST_SESSION_NAME: 'quotes-rails-ci-${CIRCLE_NODE_INDEX:-0}'
 workflows:
   version: 2
   ci:
     jobs:
-      - test
+      - setup
+      - test:
+          requires:
+            - setup
