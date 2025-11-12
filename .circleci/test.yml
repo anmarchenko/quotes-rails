@@ -37,9 +37,10 @@ jobs:
           site: datadoghq.eu
       - run:
           name: Run tests with ddtest
-          command: ./bin/ddtest run --platform ruby --framework minitest --ci_node "${CIRCLE_NODE_INDEX}"
+          command: ./bin/ddtest run --platform ruby --framework minitest
           environment:
             DD_TEST_SESSION_NAME: 'quotes-rails-ci-${CIRCLE_NODE_INDEX:-0}'
+            DD_TEST_OPTIMIZATION_RUNNER_CI_NODE: ${CIRCLE_NODE_INDEX:-0}
 
 workflows:
   test:
