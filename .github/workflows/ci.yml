@@ -30,8 +30,7 @@ jobs:
           site: datadoghq.eu
       - name: Download ddtest binary
         run: |
-          LATEST_PRERELEASE_TAG=$(gh release list --repo DataDog/ddtest --json tagName,isPrerelease --jq '.[] | select(.isPrerelease) | .tagName' | head -n 1)
-          gh release download "$LATEST_PRERELEASE_TAG" --repo DataDog/ddtest --pattern "ddtest-linux-amd64" --dir bin
+          gh release download --repo DataDog/ddtest --latest --pattern "ddtest-linux-amd64" --dir bin
           mv bin/ddtest-linux-amd64 bin/ddtest
           chmod +x bin/ddtest
         env:
@@ -83,8 +82,7 @@ jobs:
           site: datadoghq.eu
       - name: Download ddtest binary
         run: |
-          LATEST_PRERELEASE_TAG=$(gh release list --repo DataDog/ddtest --json tagName,isPrerelease --jq '.[] | select(.isPrerelease) | .tagName' | head -n 1)
-          gh release download "$LATEST_PRERELEASE_TAG" --repo DataDog/ddtest --pattern "ddtest-linux-amd64" --dir bin
+          gh release download --repo DataDog/ddtest --latest --pattern "ddtest-linux-amd64" --dir bin
           mv bin/ddtest-linux-amd64 bin/ddtest
           chmod +x bin/ddtest
         env:
