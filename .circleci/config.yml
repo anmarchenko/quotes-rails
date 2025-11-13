@@ -18,10 +18,6 @@ jobs:
       BUNDLE_JOBS: 4
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-bundle-{{ checksum "Gemfile.lock" }}
-            - v1-bundle-
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
@@ -41,10 +37,6 @@ jobs:
           environment:
             DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
             DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
-      - save_cache:
-          key: v1-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
       - save_cache:
           key: ddtest-plan-{{ .Revision }}
           paths:

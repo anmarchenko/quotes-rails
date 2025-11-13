@@ -22,19 +22,21 @@ jobs:
       BUNDLE_JOBS: 4
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-bundle-{{ checksum "Gemfile.lock" }}
-            - v1-bundle-
-      - restore_cache:
-          keys:
-            - ddtest-plan-{{ .Revision }}
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
+      - run:
+          name: Install Chromedriver
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y chromium chromium-driver
       - test-optimization-circleci-orb/autoinstrument:
           languages: ruby
           site: datadoghq.eu
+      - run:
+          name: Precompile assets
+          command: |
+            bundle exec rails assets:precompile
       - run:
           name: Run tests with ddtest
           command: |
