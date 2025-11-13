@@ -14,7 +14,7 @@ jobs:
   test:
     parallelism: << pipeline.parameters.parallelism >>
     docker:
-      - image: cimg/ruby:3.4.1-node
+      - image: cimg/ruby:3.4.1-browsers
     environment:
       RAILS_ENV: test
       DD_ENV: ci
@@ -25,11 +25,6 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-      - run:
-          name: Install Chromedriver
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y chromium chromium-driver
       - test-optimization-circleci-orb/autoinstrument:
           languages: ruby
           site: datadoghq.eu
