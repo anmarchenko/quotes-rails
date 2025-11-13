@@ -48,6 +48,7 @@ jobs:
           command: |
             time ruby -e 't=Time.now; n=Dir["test/**/*_test.rb"].length; puts "files=#{n} glob=#{(Time.now-t).round(3)}s"'
             time bin/rails runner -e test 'puts "booted"'
+            time bin/rails test -n '/^$/' test/**/*_test.rb
       - run:
           name: Plan tests with ddtest
           command: ./bin/ddtest plan --platform ruby --framework minitest
