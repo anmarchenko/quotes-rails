@@ -30,7 +30,7 @@ jobs:
           site: datadoghq.eu
       - name: Download ddtest binary
         run: |
-          gh release download --repo DataDog/ddtest --latest --pattern "ddtest-linux-amd64" --dir bin
+          gh release download --repo DataDog/ddtest --pattern "ddtest-linux-amd64" --dir bin
           mv bin/ddtest-linux-amd64 bin/ddtest
           chmod +x bin/ddtest
         env:
@@ -82,7 +82,7 @@ jobs:
           site: datadoghq.eu
       - name: Download ddtest binary
         run: |
-          gh release download --repo DataDog/ddtest --latest --pattern "ddtest-linux-amd64" --dir bin
+          gh release download --repo DataDog/ddtest --pattern "ddtest-linux-amd64" --dir bin
           mv bin/ddtest-linux-amd64 bin/ddtest
           chmod +x bin/ddtest
         env:
