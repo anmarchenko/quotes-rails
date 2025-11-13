@@ -18,9 +18,6 @@ jobs:
       BUNDLE_JOBS: 4
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - ddtest-plan-{{ .Revision }}
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
