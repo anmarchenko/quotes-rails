@@ -32,6 +32,23 @@ jobs:
             curl -fsSL https://github.com/DataDog/ddtest/releases/latest/download/ddtest-linux-amd64 -o bin/ddtest
             chmod +x bin/ddtest
       - run:
+          name: env overlay
+          command: |
+            echo '=== env ==='
+            ruby -v
+            bundle exec rails -v
+            bundle -v
+            uname -a
+            nproc
+            df -T .
+            mount | head -n 50 | sed -n '1,20p'
+            cat /sys/fs/cgroup/cpu.max 2>/dev/null || cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us 2>/dev/null || true
+      - run:
+          name: measure
+          command: |
+            time ruby -e 't=Time.now; n=Dir["test/**/*_test.rb"].length; puts "files=#{n} glob=#{(Time.now-t).round(3)}s"'
+            time bin/rails runner -e test 'puts "booted"'
+      - run:
           name: Plan tests with ddtest
           command: ./bin/ddtest plan --platform ruby --framework minitest
           environment:
