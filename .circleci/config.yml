@@ -1,4 +1,4 @@
-version: "2.1"
+version: '2.1'
 setup: true
 
 orbs:
@@ -31,11 +31,6 @@ jobs:
             mkdir -p bin
             curl -fsSL https://github.com/DataDog/ddtest/releases/latest/download/ddtest-linux-amd64 -o bin/ddtest
             chmod +x bin/ddtest
-      - run:
-          name: Dry run tests with ddtest and with bin/rails
-          command: bin/rails test
-          environment:
-            DD_TEST_OPTIMIZATION_DISCOVERY_ENABLED: true
       - run:
           name: Plan tests with ddtest
           command: ./bin/ddtest plan --platform ruby --framework minitest
