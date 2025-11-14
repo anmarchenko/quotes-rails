@@ -226,6 +226,7 @@ GEM
     oj (3.16.10)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
+    openssl (3.3.2)
     ostruct (0.6.1)
     parallel (1.26.3)
     parser (3.3.7.1)
@@ -417,6 +418,7 @@ DEPENDENCIES
   jsbundling-rails
   letter_opener
   litestack (~> 0.4.2)
+  openssl (>= 3.3.1)
   propshaft
   puma (>= 5.0)
   rails (~> 7.2.0)

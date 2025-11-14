@@ -45,3 +45,6 @@
 
 # local scripts
 /test.rb
+
+# ddtest cache
+.testoptimization
