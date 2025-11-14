@@ -11,14 +11,12 @@ jobs:
   plan:
     docker:
       - image: cimg/ruby:3.4.1-node
-    working_directory: /mnt/ramdisk/work
     environment:
       RAILS_ENV: test
       DD_ENV: ci
       BUNDLE_PATH: vendor/bundle
       BUNDLE_JOBS: 4
     steps:
-      - run: mkdir -p /mnt/ramdisk/project
       - checkout
       - ruby/install-deps
       - node/install-packages:
