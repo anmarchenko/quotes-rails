@@ -11,12 +11,14 @@ jobs:
   plan:
     docker:
       - image: cimg/ruby:3.4.1-node
+    working_directory: /mnt/ramdisk/work
     environment:
       RAILS_ENV: test
       DD_ENV: ci
       BUNDLE_PATH: vendor/bundle
       BUNDLE_JOBS: 4
     steps:
+      - run: mkdir -p /mnt/ramdisk/project
       - checkout
       - ruby/install-deps
       - node/install-packages:
@@ -34,15 +36,6 @@ jobs:
       - run:
           name: Plan tests with ddtest
           command: ./bin/ddtest plan --platform ruby --framework minitest
-          environment:
-            DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
-            DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
-      - run:
-          name: Plan on ramdisk
-          command: |
-            mkdir -p /mnt/ramdisk/work && rsync -a --delete ./ /mnt/ramdisk/work/
-            cd /mnt/ramdisk/work
-            time ddtest plan --platform ruby --framework minitest
           environment:
             DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
             DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
