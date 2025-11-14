@@ -37,6 +37,11 @@ jobs:
           environment:
             DD_TEST_OPTIMIZATION_RUNNER_MIN_PARALLELISM: 1
             DD_TEST_OPTIMIZATION_RUNNER_MAX_PARALLELISM: 4
+      - run:
+          name: Dry run tests without ddtest
+          command: bundle exec rails test
+          environment:
+            DD_TEST_OPTIMIZATION_DISCOVERY_ENABLED: true
       - save_cache:
           key: ddtest-plan-{{ .Revision }}
           paths:
