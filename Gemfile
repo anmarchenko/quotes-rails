@@ -46,11 +46,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
-# Observability
-gem "datadog", require: "datadog/auto_instrument"
-# gem "datadog-ci", path: "../../p/datadog-ci-rb"
-# gem "datadog-ci", github: "DataDog/datadog-ci-rb", ref: "main"
-
 # structured logging
 gem "rails_semantic_logger", "~> 4.0"
 
